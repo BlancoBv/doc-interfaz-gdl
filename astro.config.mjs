@@ -6,20 +6,18 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   integrations: [
     starlight({
-      title: "My Docs",
+      title: "Interfaz gdl v2",
+      defaultLocale: "es",
       social: {
-        github: "https://github.com/withastro/starlight",
+        github: "https://github.com/BlancoBv/interfaz-gdl-v2",
       },
       sidebar: [
         {
-          label: "Guides",
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Example Guide", slug: "guides/example" },
-          ],
+          label: "Guías",
+          autogenerate: { directory: "guides" },
         },
         {
-          label: "Reference",
+          label: "Referencias",
           autogenerate: { directory: "reference" },
         },
         { label: "Hooks", autogenerate: { directory: "hooks" } },

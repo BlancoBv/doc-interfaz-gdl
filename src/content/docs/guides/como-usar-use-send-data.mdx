@@ -1,0 +1,65 @@
+---
+title: Como usar useSendData
+description: A guide in my new Starlight docs site.
+---
+
+import { Code } from '@astrojs/starlight/components';
+export const code = `
+import { FC, useState } from "react";
+import Button from "@components/Button";
+import { useSendData } from "@hooks/useSendData";
+
+const CapturarOyL: FC = () => {  
+  const [body, setBody] = useState<{
+    fecha?: string;
+    idEmpleado?: number;
+    idEstacionServicio?: string;
+    idTurno?: string;
+    isla?: string;
+    evaluaciones: { cumple: 1 | 0; idcumplimiento: number }[];
+  }>({ evaluaciones: [] });
+
+  const send = useSendData("ordenLimpieza", {
+    method: "post",
+    refetchFn: () => {
+      setBody({ evaluaciones: [] });
+    },
+  });
+
+  return (
+    <div className="w-full">
+      <form
+        onSubmit={(ev) => {
+          ev.preventDefault();
+          send.mutate(body);
+        }}
+      >
+        {/* ... */}        
+        <div className="mt-4">
+          <Button
+            buttonType="submit"
+            text="Enviar"
+            block
+            isPending={send.isPending}
+          />
+        </div>
+      </form>
+    </div>
+  );
+};
+export default CapturarOyL;`
+
+Guía para usar el hook [useSendData](/hooks/use-send-data)
+
+## Formularios
+
+Ejemplo de useSendData en formularios.
+
+
+
+<Code code={code} lang="js" title="ejemplo.tsx"  mark={["send", "body", "onSubmit"]} />
+
+Al dar click en el componente _Button_ de tipo submit, se llama al evento _onSubmit_ del formulario, que a su vez llama a la variable _send_ que contiene la propiedad _mutate()_, la cual recibe los datos almacenados en _body_ y los envia a la petición. De ser correcto se llama a _refetchFn_ que limpia la variable de estado.
+
+
+

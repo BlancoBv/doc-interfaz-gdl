@@ -5,8 +5,6 @@ description: Modal
 
 Ventana modal.
 
-## Ejemplo
-
 ```jsx
 <Modal id="id" title="Modal" sm onClose={() => {}}>
   {children} //componentes hijo aquí

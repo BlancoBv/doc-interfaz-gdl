@@ -5,8 +5,6 @@ description: Componente de tabla
 
 Componente de tabla
 
-## Ejemplo
-
 ```jsx
 <Table
   data={[{} /* Array de objetos */]}
