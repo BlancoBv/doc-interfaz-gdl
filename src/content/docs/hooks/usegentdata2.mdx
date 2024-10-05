@@ -1,0 +1,32 @@
+---
+title: useSendData
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<Aside type="caution">El contenido esta sujeto a cambios.</Aside>
+
+
+
+## Devuelve
+```js
+data, isPending, isSuccess, mutateAsync, mutate().
+```
+
+## Parametros
+
+| Parametros | Uso                                                                                                               |
+| ---------- | ----------------------------------------------------------------------------------------------------------------- |
+| url        | url del endpoint de consulta no es necesarión incluir "/api/" ya que se concatena al final con el texto ingresado |
+| config     | objeto con multiples configuraciones                                                                              |
+
+## Configuraciones
+
+| Configuración | Tipo                                 | Uso                                                                          |
+| ------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
+| method        | "post"(por defecto), "delete" , "put | Indica el tipo de metodo a utilizar en la peticón                            |
+| containerID   | "global"(por defecto), "fromModal"   | indica donde se renderizará la notificación de envio incorrecto o incorrecto |
+| customFn      | ()=>void                             | función que se ejecutara cuando la petición sea correcta                     |
+| onSuccessMsg  | string                               | mensaje personalizado para notificación de envio correcto                    |
+| onErrorMsg    | string                               | mensaje personalizado para notificación de envio incorrecto                  |
+| refetchFn     | ()=>void, any                        | función para realizar llamar al refetch de datos si es necesario             |
