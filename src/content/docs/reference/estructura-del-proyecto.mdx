@@ -1,0 +1,51 @@
+---
+title: Estructura del proyecto
+description: Acerca de como se estructura el proyecto
+---
+import { FileTree } from '@astrojs/starlight/components';
+ 
+A continuación de describe la estructura del proyecto.
+
+<FileTree>
+- src/
+    - assets/
+        - img/ directorio de imagenes
+        - agruparArr.ts
+        - Axios.ts
+        - format.ts
+        - ... funciones utiles que se usan a lo largo del proyecto
+    - components/ directorio de los componentes
+        - charts/ contiene los diferentes tipos de grafica
+        - forms/ componentes para uso de formularios
+            - Input.tsx
+            - Select.tsx
+            - ...
+        - gui/ elementos de la interfaz general
+            - Header.tsx
+            - CintaOpciones.tsx
+            - ContextualMenu.tsx
+            - ...
+        - pdf/ directorio para almacenar los distintos pdf a generar
+        - ... demas archivos que no han sido clasificados
+    - hooks/
+    - layout/ layouts para las distintas vistas que se vayan a generar
+    - pages/ paginas de la aplicación
+    - routes/
+        - Index.tsx lugar donde se declaran rutas nuevas 
+</FileTree>
+
+## Estructura de _pages/_
+
+Las paginas de la aplicación siguen un patron es decir hacen referencia a como se declaran en el archivo **Index.tsx** de la carpeta _routes/_, tal y como se muestra a continuación:
+
+<FileTree>
+- nombre-de-la-ruta/
+    - components/ componentes que solo se usaran en en esta ruta
+    - nombre-de-la-subruta/
+        - components/
+        - Index.tsx
+        - ...
+    - Index.tsx archivo principal al consultar la ruta 
+</FileTree>
+
+La razón de realizar esto así es para facilitar la busqueda de dichos componentes o paginas al momento de hacer correcciones.
