@@ -1,21 +1,22 @@
 ---
 title: useSendData
+description: Guía para usar useSendData.
 ---
 
 import { Aside } from "@astrojs/starlight/components";
 
 <Aside type="caution">El contenido esta sujeto a cambios.</Aside>
 
+Permite enviar datos a la api rest.
 
-
-## Devuelve
-```js
-data, isPending, isSuccess, mutateAsync, mutate().
+```jsx
+import { useSendData } from "@hooks/useSendData";
+{data, isPending, isSuccess, mutateAsync, mutate} = useSendData("ruta-de-envio");
 ```
 
 ## Parametros
 
-| Parametros | Uso                                                                                                               |
+| Parametro | Uso                                                                                                               |
 | ---------- | ----------------------------------------------------------------------------------------------------------------- |
 | url        | url del endpoint de consulta no es necesarión incluir "/api/" ya que se concatena al final con el texto ingresado |
 | config     | objeto con multiples configuraciones                                                                              |

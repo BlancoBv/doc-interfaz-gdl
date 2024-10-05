@@ -5,9 +5,14 @@ description: Hook para manejar modales.
 
 Permite manejar los modales.
 
-## Devuelve
-
-    show(), close().
+```jsx
+import { useModal } from "@hooks/useModal";
+const modalEjemplo = useModal("modal-ejemplo");
+//Mostrar el modal
+modalEjemplo.show();
+//Cerrar el modal
+modalEjemplo.close();
+```
 
 ## Parametros
 

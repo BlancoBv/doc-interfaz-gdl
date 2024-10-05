@@ -1,0 +1,55 @@
+---
+title: Como añadir tipos a useGetData
+---
+
+import { Aside, Code, Steps } from "@astrojs/starlight/components"
+
+<Aside type="caution">Esta forma es provicional, se puede cambiar a largo plazo por una opción mejor.</Aside>
+
+export const code = `
+import { getDataInterface, useGetData } from "@hooks/useGetData";
+import { reporteChecklistInterface } from "@assets/interfaces";
+
+interface reporte extends getDataInterface {
+  data: { response: reporteChecklistInterface[] };
+}
+
+const { data, isError, isPending, refetch }: reporte = useGetData(
+"bomba-check","reporteCheckData"
+);
+`
+
+Al usar el hook [useGetData](/hooks/use-get-data) la variable _data_ no contiene definido los tipos, por lo que, es necesario añadirlos manualmente.
+
+## Extendiendo la interfaz por defecto
+
+<Steps>
+1. Para extender la interfaz por defecto primero de debe importar dicha interfaz:
+    ```jsx
+    import { getDataInterface, useGetData } from "@hooks/useGetData";
+    ```
+2. Despues importa la interfaz correspondiente a la consulta del archivo interfaces (si aún no lo has creado, creala):
+    ```jsx
+    import { reporteChecklistInterface } from "@assets/interfaces";
+    ```
+3. Extiende la interfaz:
+    ```tsx
+    interface reporte extends getDataInterface {
+     data: { response: reporteChecklistInterface[] };
+    } /*En este caso se extiende como un array de objetos*/
+
+    ```
+4. Asigna la interfaz al hook:
+    ```tsx
+    const { data, isError, isPending, refetch }: reporte = useGetData(
+    "bomba-check","reporteCheckData"
+    );
+    ```       
+</Steps>
+
+Ahora data tiene todas las propiedades definidas en la interfaz.
+
+## Resumen
+
+<Code code={code} lang="tsx" title="ejemplo.tsx"/>
+

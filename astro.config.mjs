@@ -6,8 +6,13 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   integrations: [
     starlight({
-      title: "Interfaz gdl v2",
-      defaultLocale: "es",
+      title: "Interfaz ERP v2",
+      locales: {
+        root: {
+          label: "Español",
+          lang: "es",
+        },
+      },
       social: {
         github: "https://github.com/BlancoBv/interfaz-gdl-v2",
       },

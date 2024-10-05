@@ -1,0 +1,25 @@
+---
+title: Button
+description: Componente Button.
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<Aside type="caution">El contenido esta sujeto a cambios.</Aside>
+
+Permite enviar datos a la api rest.
+
+```jsx
+import Button from "@components/Button";
+<Button buttonType="button" text="Boton de ejemplo"/>
+```
+
+## Parametros
+
+|Parametro|Uso|
+|--|--|
+|text|titulo del boton|
+|buttonType| tipo de boton "submit" o "button"|
+|isPending| controla si mostrar un loader o no|
+|block| controla si mostrar el boton con la clase block|
+

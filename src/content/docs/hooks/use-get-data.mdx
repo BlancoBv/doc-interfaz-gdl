@@ -3,12 +3,17 @@ title: useGetData
 description: Hook para obtener información.
 ---
 
+import { Aside } from "@astrojs/starlight/components"
+
+<Aside type="tip">Recuerda los tipos a los datos como se muestra en la guía [Como añadir tipos a useGetData](/guides/guides/anadir-tipos-use-get-data/), ademas de crear la interfaz en el archivo interfaces.ts</Aside>
+
 Permite realizar peticiones **_get_** a la base de datos.
 
 ## Devuelve
 
 ```js
-data, isPending, isError, refetch().
+import { useSendData } from "@hooks/useGetData";
+{data, isPending, isError, refetch} = useGetData("ruta-de-consulta");
 ```
 
 ## Parametros
