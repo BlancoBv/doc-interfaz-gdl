@@ -27,5 +27,5 @@ export default defineConfig({
       ],
     }),
   ],
-  site: "gdl",
+  base: "/gdl/",
 });
