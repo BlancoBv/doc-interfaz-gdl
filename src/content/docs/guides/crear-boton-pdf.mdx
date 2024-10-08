@@ -1,0 +1,57 @@
+---
+title: Crear botón que genere un PDF
+---
+import { Code } from "@astrojs/starlight/components"
+
+export const code = `import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
+import { FC } from "react";
+
+const Ejemplo: FC = () => {
+  const styles = StyleSheet.create({
+    page: {
+      fontSize: "8pt",
+      backgroundColor: "#fff",
+      padding: "50px",
+      width: "100%",
+      position: "relative",
+    },
+  });
+
+  return (
+    <Document title="Documento de ejemplo">
+      <Page size="LETTER" style={styles.page}>
+       <Text>Soy un pdf de ejemplo.</Text>
+      </Page>
+    </Document>
+  );
+};
+
+export default Ejemplo;
+`
+
+Para esto se usará el componente [ButtonPDF](/components/button-pdf/).
+
+## Documento PDF
+Se retomará el ejemplo planteado en [Documentos PDF](/reference/documentos-pdf/).
+<Code code={code} lang="tsx" title="ejemplo.tsx"/>
+
+## Pasando el documento como una _prop_
+Cosiderando que el documento se encuentra en la misma carpeta que el componente padre, se importa y se pasa como prop a _ButtonPDF_.
+
+<Code code={`import ButtonPDF from "@components/ButtonPDF";
+import Ejemplo from "./Ejemplo";
+import {FC} from "react";
+
+const ComponentePadre: FC () => {
+    return (
+        <>
+            <ButtonPDF doc={<Ejemplo />} isPending={isPending} />
+            //Si el documento tuviese props se pasarian como cualquier componente de react.
+            <ButtonPDF 
+            doc={<Ejemplo data={data} title="Documento de ejemplo" />}
+            isPending={isPending} 
+            />
+        </>
+    );
+};
+`} lang="tsx" title="ComponentePadre.tsx"/>

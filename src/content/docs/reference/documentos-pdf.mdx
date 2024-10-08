@@ -1,0 +1,74 @@
+---
+title: Documentos PDF
+---
+
+import { Code, Steps } from "@astrojs/starlight/components"
+
+Los documentos PDF se realizan con la ayuda de la librería [react-pdf](https://react-pdf.org/). Tienen una sintaxis definida.
+
+export const code = `import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
+import { FC } from "react";
+
+const Ejemplo: FC = () => {
+  const styles = StyleSheet.create({
+    page: {
+      fontSize: "8pt",
+      backgroundColor: "#fff",
+      padding: "50px",
+      width: "100%",
+      position: "relative",
+    },
+  });
+
+  return (
+    <Document title="Documento de ejemplo">
+      <Page size="LETTER" style={styles.page}>
+       <Text>Soy un pdf de ejemplo.</Text>
+      </Page>
+    </Document>
+  );
+};
+
+export default Ejemplo;
+`
+
+## Estructura
+
+<Steps>
+1. Importaciones
+    Aquí se importan los componentes necesarios para el funcionamiento del documento (el ejemplo importa los más importantes, pero pueden usarse otros según se requiera).
+    ```jsx
+    import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
+    import { FC } from "react";
+    ```
+2. La función que contendrá al documento:
+    ```jsx
+    const Ejemplo: FC = () => {}
+    ```
+3. Los componentes se pueden estilar a traves de la propiedad _style_, sin embargo, puede resultar poco conviniente repetirlos, para eso existe la hoja de estilos creada para el documento:
+    ```jsx
+    const styles = StyleSheet.create({
+        page: {
+            fontSize: "8pt",
+            backgroundColor: "#fff",
+            padding: "50px",
+            width: "100%",
+            position: "relative",
+        },
+    });
+    ```
+4. Finalmente la función debe retornar el documento, dentro del componente _Page_ se escribirá todo el contenido del documento (texto o imagenes).
+    ```jsx
+    return (
+        <Document title="Documento de ejemplo">
+            <Page size="LETTER" style={styles.page}>
+                <Text>Soy un pdf de ejemplo.</Text>
+            </Page>
+        </Document>
+    );
+    ```
+</Steps>
+
+## Resumen
+<Code code={code} lang="tsx" title="ejemplo.tsx"/>
+
